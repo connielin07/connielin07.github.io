@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YITING LIN — 個人頁</title>
+  <meta name="description" content="YITING LIN 的個人簡介與作品集（FJCU 醫資創應 大二）" />
+  <style>
+    :root { --bg:#fafafa; --card:#fff; --text:#1f2937; --muted:#6b7280; --border:#e5e7eb; --primary:#2563eb; --link:#2563eb; }
+    html.dark { --bg:#0b1220; --card:#0f172a; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --primary:#60a5fa; --link:#93c5fd; }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans TC",sans-serif}
+    a{color:var(--link);text-decoration:none}
+    header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);background:color-mix(in oklab, var(--bg), transparent 35%);border-bottom:1px solid var(--border)}
+    .wrap{max-width:980px;margin:0 auto;padding:16px}
+    nav a{margin-right:16px;color:var(--text);opacity:.85}
+    nav a.active, nav a:hover{opacity:1}
+    .hero{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+    .avatar{width:96px;height:96px;border-radius:50%;border:1px solid var(--border)}
+    h1{font-size:clamp(24px,3.6vw,36px);margin:.1em 0}
+    h2{margin:0 0 .5rem}
+    .muted{color:var(--muted)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:0 10px 24px rgba(0,0,0,.04)}
+    section{padding:36px 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px,1fr));gap:16px}
+    .tag{display:inline-block;padding:.25rem .55rem;border:1px solid var(--border);border-radius:999px;margin:4px 6px 0 0;font-size:.9rem;background:color-mix(in oklab, var(--card), transparent 8%)}
+    .btn{cursor:pointer;border:1px solid var(--border);background:var(--card);padding:.5rem .8rem;border-radius:10px}
+    .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
+    input[type="search"]{flex:1;min-width:220px;border:1px solid var(--border);background:var(--card);border-radius:10px;padding:.55rem .8rem;color:var(--text)}
+    .accordion-item + .accordion-item{margin-top:8px}
+    .accordion-header{width:100%;text-align:left;background:var(--card);border:1px solid var(--border);padding:.6rem .8rem;border-radius:10px}
+    .accordion-content{display:none;border-left:3px solid var(--primary);padding:.6rem .8rem;margin:.35rem 0 .8rem .25rem}
+    footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);text-align:center}
+    .topbtn{position:fixed;right:16px;bottom:16px;display:none}
+    .kvs{margin:.4rem 0 .2rem;font-weight:600}
+    .list{margin:.4rem 0 0 1.2rem}
+    .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .pill{font-size:.82rem;padding:.15rem .5rem;border:1px solid var(--border);border-radius:999px;color:var(--muted)}
+    .sep{height:1px;background:var(--border);margin:14px 0}
+    code{background:color-mix(in oklab, var(--card), black 3%);padding:.05rem .35rem;border-radius:6px;border:1px solid var(--border)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap row">
+      <nav class="row" style="flex:1 1 auto;">
+        <a href="#home" class="active">首頁</a>
+        <a href="#skills">技能</a>
+        <a href="#courses">課程</a>
+        <a href="#projects">專案</a>
+        <a href="#goals">目標</a>
+        <a href="#contact">聯絡</a>
+      </nav>
+      <div class="row">
+        <button id="toggleTheme" class="btn" title="深/淺色主題">🌓 主題</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- 首頁 -->
+    <section id="home">
+      <div class="card hero">
+        <div>
+          <h1>Hi，我是 <strong>YITING LIN</strong>！</h1>
+          <p class="muted">輔仁大學 醫學資訊與創新應用學士學位學程 大二學生<br/>近期學習：Java Web、前後端與資料庫、行動裝置程式設計</p>
+          <div class="toolbar">
+            <input id="globalFilter" type="search" placeholder="🔎 輸入關鍵字快速篩選：技能、課程、專案…" />
+            <button id="scrollProjects" class="btn">捲到精選專案</button>
+          </div>
+          <div class="row">
+            <span class="pill">GitHub Pages + jQuery</span>
+            <span class="pill">RWD</span>
+            <span class="pill">單檔部署</span>
+          </div>
+        </div>
+        <img class="avatar" alt="avatar" src="https://github.com/connielin07.png" />
+      </div>
+    </section>
+
+    <!-- 技能 -->
+    <section id="skills">
+      <h2>技能與工具</h2>
+      <div class="card" data-filter-scope="skills">
+        <div class="kvs">程式語言</div>
+        <div class="row" data-filter="Java, 程式語言"><span class="tag">Java</span></div>
+        <div class="row" data-filter="Python, 程式語言, 基礎"><span class="tag">Python（基礎）</span></div>
+
+        <div class="kvs">前端技術</div>
+        <div class="row" data-filter="前端, HTML"><span class="tag">HTML</span></div>
+        <div class="row" data-filter="前端, CSS"><span class="tag">CSS</span></div>
+
+        <div class="kvs">資料庫</div>
+        <div class="row" data-filter="資料庫, MySQL"><span class="tag">MySQL</span></div>
+        <div class="row" data-filter="資料庫, SQL Server"><span class="tag">SQL Server 2022</span></div>
+
+        <div class="kvs">工具與應用</div>
+        <div class="row" data-filter="Git"><span class="tag">Git</span></div>
+        <div class="row" data-filter="Linux"><span class="tag">Linux 基礎</span></div>
+        <div class="row" data-filter="Wireshark"><span class="tag">Wireshark</span></div>
+        <div class="row" data-filter="API"><span class="tag">API 整合</span></div>
+        <div class="row" data-filter="Dify"><span class="tag">Dify</span></div>
+        <div class="row" data-filter="NotebookLM"><span class="tag">NotebookLM</span></div>
+      </div>
+    </section>
+
+    <!-- 課程 -->
+    <section id="courses">
+      <h2>已修課程與學習背景</h2>
+      <div class="card" data-filter-scope="courses">
+        <ul class="list">
+          <li data-filter="資訊安全導論, 資安">資訊安全導論、智慧資安講座</li>
+          <li data-filter="醫學資訊, 醫療標準, 術語">醫學資訊概論、醫療標準及術語</li>
+          <li data-filter="程式設計, 計概, 微積分">程式設計、計算機概論、微積分</li>
+          <li data-filter="日文">基礎日文</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 專案 -->
+    <section id="projects">
+      <h2>精選專案</h2>
+      <div class="card" data-filter-scope="projects">
+        <!-- 手風琴 1 -->
+        <div class="accordion-item" data-filter="Java, JSP, Servlet, MySQL, 醫療, 表單, 上傳, MVC">
+          <button class="accordion-header">JSP 表單上傳系統（Java + Servlet + MySQL）</button>
+          <div class="accordion-content">
+            <p><em>使用 Java Servlet 與 MySQL 建構的醫療資料上傳平台，支援表單資料處理、資料庫儲存與成功頁面回饋。</em></p>
+            <div class="sep"></div>
+            <div class="grid">
+              <div>
+                <strong>技術</strong>
+                <ul class="list">
+                  <li>Java、JSP、Servlet、MySQL</li>
+                </ul>
+              </div>
+              <div>
+                <strong>功能</strong>
+                <ul class="list">
+                  <li>表單輸入 → 資料驗證 → 寫入資料庫</li>
+                </ul>
+              </div>
+              <div>
+                <strong>學習重點</strong>
+                <ul class="list">
+                  <li>MVC 結構設計、資料傳遞、例外處理</li>
+                </ul>
+              </div>
+            </div>
+            <p class="muted">文件：<a href="https://github.com/connielin07/university-year-1/blob/main/reports/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88(%E4%BA%8C)_JSP%E8%A1%A8%E5%96%AE%E4%B8%8A%E5%82%B3%E7%B3%BB%E7%B5%B1.pdf" target="_blank" rel="noopener">PDF</a></p>
+          </div>
+        </div>
+        <!-- 手風琴 2 -->
+        <div class="accordion-item" data-filter="Python, Selenium, OpenAPI, Dify, 爬蟲, 課程, 評價, Classin, 自動化">
+          <button class="accordion-header">查詢課程評價系統（Python + API + Selenium）</button>
+          <div class="accordion-content">
+            <p><em>整合 Python + API 技術自動化查詢 Classin 上的課程推薦討論。</em></p>
+            <div class="sep"></div>
+            <div class="grid">
+              <div>
+                <strong>技術</strong>
+                <ul class="list">
+                  <li>Python、Selenium、OpenAPI、Dify、網頁資料解析</li>
+                </ul>
+              </div>
+              <div>
+                <strong>功能</strong>
+                <ul class="list">
+                  <li>輸入關鍵字 → 從多平台爬取 → 整合回傳推薦評價</li>
+                </ul>
+              </div>
+              <div>
+                <strong>學習重點</strong>
+                <ul class="list">
+                  <li>自動化瀏覽器操作、API 呼叫與資料清洗</li>
+                </ul>
+              </div>
+            </div>
+            <p class="muted">文件：<a href="https://github.com/connielin07/university-year-1/blob/main/reports/%E8%B3%87%E5%AE%89%E5%B0%8E%E8%AB%96_%E6%9F%A5%E8%A9%A2%E8%AA%B2%E7%A8%8B%E8%A9%95%E5%83%B9%E7%B3%BB%E7%B5%B1.pdf" target="_blank" rel="noopener">PDF</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 目標 -->
+    <section id="goals">
+      <h2>我的目標</h2>
+      <div class="card" data-filter-scope="goals">
+        <ul class="list">
+          <li data-filter="Java, Web, 全端, 資料庫">學會建構完整 Java Web 應用（含前後端與資料庫）</li>
+          <li data-filter="資訊, AI, 實作">累積更多資訊與 AI 實作經驗</li>
+          <li data-filter="實習, 托福">為未來資工或醫資相關實習與托福做好準備</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 聯絡 -->
+    <section id="contact">
+      <h2>聯絡我</h2>
+      <div class="card">
+        <div class="grid">
+          <div>
+            <p>GitHub：<a href="https://github.com/connielin07" target="_blank" rel="noopener">github.com/connielin07</a></p>
+            <p>Email：<a id="emailLink" href="mailto:linconnie1207@gmail.com">linconnie1207@gmail.com</a></p>
+          </div>
+          <div>
+            <button id="copyEmail" class="btn" title="複製 Email">📋 複製 Email</button>
+            <button id="backTop" class="btn topbtn">⬆ 回到頂部</button>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:.6rem;">© <span id="year"></span> YITING LIN — 使用 GitHub Pages 與 jQuery 製作</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap muted">最後更新：<span id="updatedAt"></span></div>
+  </footer>
+
+  <!-- jQuery：官方 CDN + SRI -->
+  <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBVSfQZ8bS7G3N3u2/7yk0k="
+    crossorigin="anonymous"></script>
+
+  <script>
+    // ==== localStorage 小工具 ====
+    const store = {
+      get(k, d=null){ try{ return JSON.parse(localStorage.getItem(k)) ?? d }catch{ return d } },
+      set(k, v){ localStorage.setItem(k, JSON.stringify(v)) }
+    };
+
+    // ==== 主題切換 ====
+    function applyTheme(mode){
+      if(mode === 'dark') document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
+    }
+    applyTheme(store.get('theme','light'));
+
+    // ==== 共用初始化 ====
+    $(function(){
+
+      // 導覽平滑捲動
+      $('nav a').on('click', function(e){
+        const href = $(this).attr('href');
+        if(href && href.startsWith('#')){
+          e.preventDefault();
+          const target = $(href);
+          if(target.length){
+            $('html, body').animate({ scrollTop: target.offset().top - 64 }, 400);
+          }
+        }
+      });
+
+      // 導覽 active 標示（簡易 scrollspy）
+      const sections = $('section').map(function(){ return { id: this.id, top: $(this).offset().top - 80 } }).get();
+      $(window).on('scroll', function(){
+        const y = window.scrollY;
+        let cur = sections[0]?.id;
+        for(const s of sections){ if(y >= s.top) cur = s.id; }
+        if(cur){
+          $('nav a').removeClass('active');
+          $(`nav a[href="#${cur}"]`).addClass('active');
+        }
+
+        // 回到頂部按鈕
+        if(y > 300) $('#backTop').fadeIn(150);
+        else $('#backTop').fadeOut(150);
+      }).trigger('scroll');
+
+      // 捲到專案
+      $('#scrollProjects').on('click', () => {
+        $('html, body').animate({ scrollTop: $('#projects').offset().top - 64 }, 400);
+      });
+
+      // 主題切換（記憶）
+      $('#toggleTheme').on('click', () => {
+        const next = document.documentElement.classList.contains('dark') ? 'light':'dark';
+        applyTheme(next);
+        store.set('theme', next);
+      });
+
+      // 手風琴
+      $('#projects .card').on('click', '.accordion-header', function(){
+        const $content = $(this).next('.accordion-content');
+        $content.slideToggle(180);
+      });
+
+      // 全站關鍵字過濾：掃描含 data-filter / data-filter-scope 的節點
+      function match(text, q){
+        return text.toLowerCase().includes(q.toLowerCase());
+      }
+      $('#globalFilter').on('input', function(){
+        const q = $(this).val().trim();
+        if(!q){
+          $('[data-filter]').show();
+          // 展開中的手風琴內容不改變狀態；只是把被隱藏的重新顯示
+          return;
+        }
+        $('[data-filter]').each(function(){
+          const keys = $(this).attr('data-filter') || '';
+          const text = $(this).text();
+          const ok = match(keys, q) || match(text, q);
+          $(this).toggle(ok);
+        });
+      });
+
+      // 複製 Email
+      $('#copyEmail').on('click', async function(){
+        const email = $('#emailLink').text().trim();
+        try{
+          await navigator.clipboard.writeText(email);
+          const $btn = $(this);
+          const old = $btn.text();
+          $btn.text('✅ 已複製');
+          setTimeout(()=> $btn.text(old), 1200);
+        }catch{
+          alert('無法複製，請手動複製：' + email);
+        }
+      });
+
+      // 回到頂部
+      $('#backTop').on('click', function(){
+        $('html, body').animate({ scrollTop: 0 }, 380);
+      });
+
+      // 年份與更新時間
+      $('#year').text(new Date().getFullYear());
+      $('#updatedAt').text(new Date().toLocaleString());
+    });
+  </script>
+</body>
+</html>
