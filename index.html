@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8" />
@@ -6,105 +6,242 @@
   <title>YITING LIN — 個人頁</title>
   <meta name="description" content="YITING LIN 的個人簡介與作品集（FJCU 醫資創應 大二）" />
   <style>
-    :root { --bg:#fafafa; --card:#fff; --text:#1f2937; --muted:#6b7280; --border:#e5e7eb; --primary:#2563eb; --link:#2563eb; }
-    html.dark { --bg:#0b1220; --card:#0f172a; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --primary:#60a5fa; --link:#93c5fd; }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans TC",sans-serif}
-    a{color:var(--link);text-decoration:none}
-    header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.1) blur(6px);background:color-mix(in oklab, var(--bg), transparent 35%);border-bottom:1px solid var(--border)}
-    .wrap{max-width:980px;margin:0 auto;padding:16px}
-    nav a{margin-right:16px;color:var(--text);opacity:.85}
-    nav a.active, nav a:hover{opacity:1}
-    .hero{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
-    .avatar{width:96px;height:96px;border-radius:50%;border:1px solid var(--border)}
-    h1{font-size:clamp(24px,3.6vw,36px);margin:.1em 0}
-    h2{margin:0 0 .5rem}
-    .muted{color:var(--muted)}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:0 10px 24px rgba(0,0,0,.04)}
-    section{padding:36px 0}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px,1fr));gap:16px}
-    .tag{display:inline-block;padding:.25rem .55rem;border:1px solid var(--border);border-radius:999px;margin:4px 6px 0 0;font-size:.9rem;background:color-mix(in oklab, var(--card), transparent 8%)}
-    .btn{cursor:pointer;border:1px solid var(--border);background:var(--card);padding:.5rem .8rem;border-radius:10px}
-    .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
-    input[type="search"]{flex:1;min-width:220px;border:1px solid var(--border);background:var(--card);border-radius:10px;padding:.55rem .8rem;color:var(--text)}
-    .accordion-item + .accordion-item{margin-top:8px}
-    .accordion-header{width:100%;text-align:left;background:var(--card);border:1px solid var(--border);padding:.6rem .8rem;border-radius:10px}
-    .accordion-content{display:none;border-left:3px solid var(--primary);padding:.6rem .8rem;margin:.35rem 0 .8rem .25rem}
-    footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);text-align:center}
-    .topbtn{position:fixed;right:16px;bottom:16px;display:none}
-    .kvs{margin:.4rem 0 .2rem;font-weight:600}
-    .list{margin:.4rem 0 0 1.2rem}
-    .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-    .pill{font-size:.82rem;padding:.15rem .5rem;border:1px solid var(--border);border-radius:999px;color:var(--muted)}
-    .sep{height:1px;background:var(--border);margin:14px 0}
-    code{background:color-mix(in oklab, var(--card), black 3%);padding:.05rem .35rem;border-radius:6px;border:1px solid var(--border)}
+    :root {
+      --bg: #fafafa;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --primary: #2563eb;
+    }
+    html.dark {
+      --bg: #0b1220;
+      --card: #0f172a;
+      --text: #ffffff;
+      --muted: #cbd5f5;
+      --border: #1f2937;
+      --primary: #60a5fa;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 system-ui, -apple-system, "Segoe UI", "Noto Sans TC", sans-serif;
+    }
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      max-width: 940px;
+      margin: auto;
+      padding: 12px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    nav a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--text);
+      transition: background-color 0.2s ease;
+    }
+    nav a:hover {
+      background-color: rgba(37, 99, 235, 0.12);
+    }
+    nav a.active {
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .nav-theme {
+      margin-left: auto;
+    }
+    main,
+    footer {
+      max-width: 940px;
+      margin: auto;
+      padding: 0 16px 40px;
+    }
+    section {
+      margin: 40px 0;
+    }
+    h1 {
+      font-size: clamp(26px, 5vw, 36px);
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin-bottom: 16px;
+    }
+    .muted {
+      color: var(--muted);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+    }
+    .hero img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0;
+    }
+    input[type="search"] {
+      flex: 1;
+      min-width: 200px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 12px;
+      background: var(--card);
+      color: var(--text);
+    }
+    .btn {
+      cursor: pointer;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 14px;
+      background: var(--card);
+      color: var(--text);
+    }
+    .pill,
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      margin: 0 8px 8px 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    ul.list {
+      margin-left: 20px;
+    }
+    .accordion-header {
+      width: 100%;
+      text-align: left;
+      border: none;
+      background: var(--card);
+      padding: 10px 0;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text);
+    }
+    .accordion-content {
+      display: none;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      color: var(--muted);
+      text-align: center;
+    }
+    #backTop {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      display: none;
+      z-index: 20;
+    }
+    .email-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .btn.inline {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="wrap row">
-      <nav class="row" style="flex:1 1 auto;">
-        <a href="#home" class="active">首頁</a>
-        <a href="#skills">技能</a>
-        <a href="#courses">課程</a>
-        <a href="#projects">專案</a>
-        <a href="#goals">目標</a>
-        <a href="#contact">聯絡</a>
-      </nav>
-      <div class="row">
-        <button id="toggleTheme" class="btn" title="深/淺色主題">🌓 主題</button>
-      </div>
-    </div>
+    <nav>
+      <a href="#home" class="active">首頁</a>
+      <a href="#skills">技能</a>
+      <a href="#courses">課程</a>
+      <a href="#projects">專案</a>
+      <a href="#goals">目標</a>
+      <a href="#contact">聯絡</a>
+      <button id="toggleTheme" class="btn nav-theme" title="切換深淺色">🌓 主題</button>
+    </nav>
   </header>
 
-  <main class="wrap">
-    <!-- 首頁 -->
+  <main>
     <section id="home">
       <div class="card hero">
         <div>
           <h1>Hi，我是 <strong>YITING LIN</strong>！</h1>
-          <p class="muted">輔仁大學 醫學資訊與創新應用學士學位學程 大二學生<br/>近期學習：Java Web、前後端與資料庫、行動裝置程式設計</p>
+          <p class="muted">輔仁大學 醫學資訊與創新應用學士學位學程 大二學生<br />近期學習：Java Web、前後端與資料庫、行動裝置程式設計</p>
           <div class="toolbar">
             <input id="globalFilter" type="search" placeholder="🔎 輸入關鍵字快速篩選：技能、課程、專案…" />
             <button id="scrollProjects" class="btn">捲到精選專案</button>
           </div>
-          <div class="row">
+          <div>
             <span class="pill">GitHub Pages + jQuery</span>
             <span class="pill">RWD</span>
             <span class="pill">單檔部署</span>
           </div>
         </div>
-        <img class="avatar" alt="avatar" src="https://github.com/connielin07.png" />
+        <img alt="avatar" src="https://github.com/connielin07.png" />
       </div>
     </section>
 
-    <!-- 技能 -->
     <section id="skills">
       <h2>技能與工具</h2>
       <div class="card" data-filter-scope="skills">
-        <div class="kvs">程式語言</div>
-        <div class="row" data-filter="Java, 程式語言"><span class="tag">Java</span></div>
-        <div class="row" data-filter="Python, 程式語言, 基礎"><span class="tag">Python（基礎）</span></div>
-
-        <div class="kvs">前端技術</div>
-        <div class="row" data-filter="前端, HTML"><span class="tag">HTML</span></div>
-        <div class="row" data-filter="前端, CSS"><span class="tag">CSS</span></div>
-
-        <div class="kvs">資料庫</div>
-        <div class="row" data-filter="資料庫, MySQL"><span class="tag">MySQL</span></div>
-        <div class="row" data-filter="資料庫, SQL Server"><span class="tag">SQL Server 2022</span></div>
-
-        <div class="kvs">工具與應用</div>
-        <div class="row" data-filter="Git"><span class="tag">Git</span></div>
-        <div class="row" data-filter="Linux"><span class="tag">Linux 基礎</span></div>
-        <div class="row" data-filter="Wireshark"><span class="tag">Wireshark</span></div>
-        <div class="row" data-filter="API"><span class="tag">API 整合</span></div>
-        <div class="row" data-filter="Dify"><span class="tag">Dify</span></div>
-        <div class="row" data-filter="NotebookLM"><span class="tag">NotebookLM</span></div>
+        <p class="muted">使用輸入框快速篩選技能或工具</p>
+        <div data-filter="Java, 程式語言"><span class="tag">Java</span></div>
+        <div data-filter="Python, 程式語言, 基礎"><span class="tag">Python（基礎）</span></div>
+        <div data-filter="前端, HTML"><span class="tag">HTML</span></div>
+        <div data-filter="前端, CSS"><span class="tag">CSS</span></div>
+        <div data-filter="資料庫, MySQL"><span class="tag">MySQL</span></div>
+        <div data-filter="資料庫, SQL Server"><span class="tag">SQL Server 2022</span></div>
+        <div data-filter="Git"><span class="tag">Git</span></div>
+        <div data-filter="Linux"><span class="tag">Linux 基礎</span></div>
+        <div data-filter="Wireshark"><span class="tag">Wireshark</span></div>
+        <div data-filter="API"><span class="tag">API 整合</span></div>
+        <div data-filter="Dify"><span class="tag">Dify</span></div>
+        <div data-filter="NotebookLM"><span class="tag">NotebookLM</span></div>
       </div>
     </section>
 
-    <!-- 課程 -->
     <section id="courses">
       <h2>已修課程與學習背景</h2>
       <div class="card" data-filter-scope="courses">
@@ -117,16 +254,13 @@
       </div>
     </section>
 
-    <!-- 專案 -->
     <section id="projects">
       <h2>精選專案</h2>
       <div class="card" data-filter-scope="projects">
-        <!-- 手風琴 1 -->
         <div class="accordion-item" data-filter="Java, JSP, Servlet, MySQL, 醫療, 表單, 上傳, MVC">
           <button class="accordion-header">JSP 表單上傳系統（Java + Servlet + MySQL）</button>
           <div class="accordion-content">
             <p><em>使用 Java Servlet 與 MySQL 建構的醫療資料上傳平台，支援表單資料處理、資料庫儲存與成功頁面回饋。</em></p>
-            <div class="sep"></div>
             <div class="grid">
               <div>
                 <strong>技術</strong>
@@ -150,12 +284,10 @@
             <p class="muted">文件：<a href="https://github.com/connielin07/university-year-1/blob/main/reports/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88(%E4%BA%8C)_JSP%E8%A1%A8%E5%96%AE%E4%B8%8A%E5%82%B3%E7%B3%BB%E7%B5%B1.pdf" target="_blank" rel="noopener">PDF</a></p>
           </div>
         </div>
-        <!-- 手風琴 2 -->
         <div class="accordion-item" data-filter="Python, Selenium, OpenAPI, Dify, 爬蟲, 課程, 評價, Classin, 自動化">
           <button class="accordion-header">查詢課程評價系統（Python + API + Selenium）</button>
           <div class="accordion-content">
             <p><em>整合 Python + API 技術自動化查詢 Classin 上的課程推薦討論。</em></p>
-            <div class="sep"></div>
             <div class="grid">
               <div>
                 <strong>技術</strong>
@@ -182,7 +314,6 @@
       </div>
     </section>
 
-    <!-- 目標 -->
     <section id="goals">
       <h2>我的目標</h2>
       <div class="card" data-filter-scope="goals">
@@ -194,158 +325,144 @@
       </div>
     </section>
 
-    <!-- 聯絡 -->
     <section id="contact">
       <h2>聯絡我</h2>
       <div class="card">
-        <div class="grid">
-          <div>
-            <p>GitHub：<a href="https://github.com/connielin07" target="_blank" rel="noopener">github.com/connielin07</a></p>
-            <p>Email：<a id="emailLink" href="mailto:linconnie1207@gmail.com">linconnie1207@gmail.com</a></p>
-          </div>
-          <div>
-            <button id="copyEmail" class="btn" title="複製 Email">📋 複製 Email</button>
-            <button id="backTop" class="btn topbtn">⬆ 回到頂部</button>
-          </div>
-        </div>
-        <p class="muted" style="margin-top:.6rem;">© <span id="year"></span> YITING LIN — 使用 GitHub Pages 與 jQuery 製作</p>
+        <p>GitHub：<a href="https://github.com/connielin07" target="_blank" rel="noopener">github.com/connielin07</a></p>
+        <p class="email-row">
+          Email：
+          <a id="emailLink" href="mailto:linconnie1207@gmail.com">linconnie1207@gmail.com</a>
+          <button id="copyEmail" class="btn inline" title="複製 Email">📋 複製 Email</button>
+        </p>
+        <button id="backTop" class="btn" title="回到頂部">⬆ 回到頂部</button>
+        <p class="muted" style="margin-top: 12px;">© <span id="year"></span> YITING LIN — 使用 GitHub Pages 與 jQuery 製作</p>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap muted">最後更新：<span id="updatedAt"></span></div>
+    最後更新：<span id="updatedAt"></span>
   </footer>
 
-  <!-- jQuery：官方 CDN + SRI -->
-  <script
-    src="./jquery-3.7.1.min.js"></script>
-
+  <script src="./jquery-3.7.1.min.js"></script>
   <script>
-    // ==== localStorage 小工具 ====
     const store = {
-      get(k, d=null){ try{ return JSON.parse(localStorage.getItem(k)) ?? d }catch{ return d } },
-      set(k, v){ localStorage.setItem(k, JSON.stringify(v)) }
+      get(key, fallback = null) {
+        try {
+          const value = localStorage.getItem(key);
+          return value ? JSON.parse(value) : fallback;
+        } catch {
+          return fallback;
+        }
+      },
+      set(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+      }
     };
 
-    // ==== 主題切換 ====
-    function applyTheme(mode){
-      if(mode === 'dark') document.documentElement.classList.add('dark');
-      else document.documentElement.classList.remove('dark');
-    }
-    applyTheme(store.get('theme','light'));
-
-    let sections = [];
-    function recalcSections(){
-      sections = $('section').map(function(){
-        const top = $(this).offset()?.top;
-        return top != null ? { id: this.id, top: top - 80 } : null;
-      }).get();
+    function applyTheme(mode) {
+      $('html').toggleClass('dark', mode === 'dark');
     }
 
-    function updateNavActive(y){
-      let cur = sections[0]?.id;
-      for(const s of sections){ if(y >= s.top) cur = s.id; }
-      if(cur){
-        $('nav a').removeClass('active');
-        $(`nav a[href="#${cur}"]`).addClass('active');
+    applyTheme(store.get('theme', 'light'));
+
+    $(function () {
+      const $sections = $('section');
+      const sectionOffsets = [];
+
+      function recalcOffsets() {
+        sectionOffsets.length = 0;
+        $sections.each(function () {
+          const $el = $(this);
+          const top = $el.offset()?.top ?? 0;
+          sectionOffsets.push({ id: this.id, top: top - 72 });
+        });
       }
-    }
 
-    // ==== 共用初始化 ====
-    $(function(){
-      recalcSections();
-
-      // 導覽平滑捲動
-      $('nav a').on('click', function(e){
-        const href = $(this).attr('href');
-        if(href && href.startsWith('#')){
-          e.preventDefault();
-          const target = $(href);
-          if(target.length){
-            $('html, body').animate({ scrollTop: target.offset().top - 64 }, 400);
-          }
+      function highlightNav(scrollY) {
+        let current = sectionOffsets[0]?.id;
+        for (const section of sectionOffsets) {
+          if (scrollY >= section.top) current = section.id;
         }
+        if (current) {
+          $('nav a').removeClass('active');
+          $(`nav a[href="#${current}"]`).addClass('active');
+        }
+      }
+
+      recalcOffsets();
+      highlightNav(window.scrollY);
+
+      $('nav').on('click', 'a[href^="#"]', function (event) {
+        event.preventDefault();
+        const target = $(this.getAttribute('href'));
+        if (!target.length) return;
+        $('html, body').animate({ scrollTop: target.offset().top - 64 }, 300);
+        $('nav a').removeClass('active');
+        $(this).addClass('active');
       });
 
-      // 導覽 active 標示（簡易 scrollspy）
-      $(window).on('scroll', function(){
-        const y = window.scrollY;
-        updateNavActive(y);
-
-        // 回到頂部按鈕
-        if(y > 300) $('#backTop').fadeIn(150);
-        else $('#backTop').fadeOut(150);
-      }).trigger('scroll');
-      $(window).on('resize', function(){
-        recalcSections();
-        $(window).trigger('scroll');
-      });
-
-      // 捲到專案
-      $('#scrollProjects').on('click', () => {
-        $('html, body').animate({ scrollTop: $('#projects').offset().top - 64 }, 400);
-      });
-
-      // 主題切換（記憶）
-      $('#toggleTheme').on('click', () => {
-        const next = document.documentElement.classList.contains('dark') ? 'light':'dark';
+      $('#toggleTheme').on('click', function () {
+        const next = $('html').hasClass('dark') ? 'light' : 'dark';
         applyTheme(next);
         store.set('theme', next);
       });
 
-      // 手風琴
-      $('#projects .card').on('click', '.accordion-header', function(){
-        const $content = $(this).next('.accordion-content');
-        $content.slideToggle(180, () => {
-          recalcSections();
-          $(window).trigger('scroll');
-        });
-      });
-
-      // 全站關鍵字過濾：掃描含 data-filter / data-filter-scope 的節點
-      function match(text, q){
-        return text.toLowerCase().includes(q.toLowerCase());
-      }
-      $('#globalFilter').on('input', function(){
-        const q = $(this).val().trim();
-        if(!q){
+      $('#globalFilter').on('input', function () {
+        const query = $(this).val().trim().toLowerCase();
+        if (!query) {
           $('[data-filter]').show();
-          recalcSections();
-          $(window).trigger('scroll');
-          // 展開中的手風琴內容不改變狀態；只是把被隱藏的重新顯示
+          recalcOffsets();
+          highlightNav(window.scrollY);
           return;
         }
-        $('[data-filter]').each(function(){
-          const keys = $(this).attr('data-filter') || '';
-          const text = $(this).text();
-          const ok = match(keys, q) || match(text, q);
-          $(this).toggle(ok);
+        $('[data-filter]').each(function () {
+          const keys = ($(this).attr('data-filter') || $(this).text()).toLowerCase();
+          $(this).toggle(keys.includes(query));
         });
-        recalcSections();
-        $(window).trigger('scroll');
+        recalcOffsets();
+        highlightNav(window.scrollY);
       });
 
-      // 複製 Email
-      $('#copyEmail').on('click', async function(){
+      $('.card').on('click', '.accordion-header', function () {
+        $(this).next('.accordion-content').stop(true, true).slideToggle(180);
+        setTimeout(recalcOffsets, 220);
+      });
+
+      $('#scrollProjects').on('click', function () {
+        $('html, body').animate({ scrollTop: $('#projects').offset().top - 64 }, 300);
+        $('nav a').removeClass('active');
+        $('nav a[href="#projects"]').addClass('active');
+      });
+
+      $(window).on('scroll', function () {
+        const scrollY = $(this).scrollTop();
+        $('#backTop').toggle(scrollY > 240);
+        highlightNav(scrollY);
+      });
+
+      $(window).on('resize', function () {
+        recalcOffsets();
+        highlightNav(window.scrollY);
+      });
+
+      $('#backTop').on('click', function () {
+        $('html, body').animate({ scrollTop: 0 }, 280);
+      });
+
+      $('#copyEmail').on('click', async function () {
         const email = $('#emailLink').text().trim();
-        try{
+        try {
           await navigator.clipboard.writeText(email);
           const $btn = $(this);
-          const old = $btn.text();
+          const prev = $btn.text();
           $btn.text('✅ 已複製');
-          setTimeout(()=> $btn.text(old), 1200);
-        }catch{
+          setTimeout(() => $btn.text(prev), 1200);
+        } catch {
           alert('無法複製，請手動複製：' + email);
         }
       });
 
-      // 回到頂部
-      $('#backTop').on('click', function(){
-        $('html, body').animate({ scrollTop: 0 }, 380);
-      });
-
-      // 年份與更新時間
       $('#year').text(new Date().getFullYear());
       $('#updatedAt').text(new Date().toLocaleString());
     });
