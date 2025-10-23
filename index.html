@@ -219,9 +219,7 @@
 
   <!-- jQuery：官方 CDN + SRI -->
   <script
-    src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBVSfQZ8bS7G3N3u2/7yk0k="
-    crossorigin="anonymous"></script>
+    src="./jquery-3.7.1.min.js"></script>
 
   <script>
     // ==== localStorage 小工具 ====
@@ -237,8 +235,26 @@
     }
     applyTheme(store.get('theme','light'));
 
+    let sections = [];
+    function recalcSections(){
+      sections = $('section').map(function(){
+        const top = $(this).offset()?.top;
+        return top != null ? { id: this.id, top: top - 80 } : null;
+      }).get();
+    }
+
+    function updateNavActive(y){
+      let cur = sections[0]?.id;
+      for(const s of sections){ if(y >= s.top) cur = s.id; }
+      if(cur){
+        $('nav a').removeClass('active');
+        $(`nav a[href="#${cur}"]`).addClass('active');
+      }
+    }
+
     // ==== 共用初始化 ====
     $(function(){
+      recalcSections();
 
       // 導覽平滑捲動
       $('nav a').on('click', function(e){
@@ -253,20 +269,18 @@
       });
 
       // 導覽 active 標示（簡易 scrollspy）
-      const sections = $('section').map(function(){ return { id: this.id, top: $(this).offset().top - 80 } }).get();
       $(window).on('scroll', function(){
         const y = window.scrollY;
-        let cur = sections[0]?.id;
-        for(const s of sections){ if(y >= s.top) cur = s.id; }
-        if(cur){
-          $('nav a').removeClass('active');
-          $(`nav a[href="#${cur}"]`).addClass('active');
-        }
+        updateNavActive(y);
 
         // 回到頂部按鈕
         if(y > 300) $('#backTop').fadeIn(150);
         else $('#backTop').fadeOut(150);
       }).trigger('scroll');
+      $(window).on('resize', function(){
+        recalcSections();
+        $(window).trigger('scroll');
+      });
 
       // 捲到專案
       $('#scrollProjects').on('click', () => {
@@ -283,7 +297,10 @@
       // 手風琴
       $('#projects .card').on('click', '.accordion-header', function(){
         const $content = $(this).next('.accordion-content');
-        $content.slideToggle(180);
+        $content.slideToggle(180, () => {
+          recalcSections();
+          $(window).trigger('scroll');
+        });
       });
 
       // 全站關鍵字過濾：掃描含 data-filter / data-filter-scope 的節點
@@ -294,6 +311,8 @@
         const q = $(this).val().trim();
         if(!q){
           $('[data-filter]').show();
+          recalcSections();
+          $(window).trigger('scroll');
           // 展開中的手風琴內容不改變狀態；只是把被隱藏的重新顯示
           return;
         }
@@ -303,6 +322,8 @@
           const ok = match(keys, q) || match(text, q);
           $(this).toggle(ok);
         });
+        recalcSections();
+        $(window).trigger('scroll');
       });
 
       // 複製 Email
